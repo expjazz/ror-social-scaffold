@@ -1,0 +1,6 @@
+
+<%= form_with url: '/users', local: true, method: :post do |f| %>
+  <%= f.hidden_field :active, value: current_user.id %>
+  <%= f.hidden_field :passive, value: user.id %>
+  <button type="submit" class="btn btn-primary">send request</button>
+<% end %>
