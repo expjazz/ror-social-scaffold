@@ -17,11 +17,12 @@ module ApplicationHelper
   end
 
   def check_friendship(user, current_user)
-    if current_user.active_friends.include?(user) || current_user.passive_friends.include?(user)
+    @user = user
+    if current_user.active_friends.include?(@user) || current_user.passive_friends.include?(@user)
          render 'users/friends' if status == true
          render 'users/pending' if status != true
-   else
-      render 'users/send', object: user
+    else
+      render 'users/send', user: @user
     end
   end
 end
