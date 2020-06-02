@@ -60,22 +60,4 @@ RSpec.describe 'Testing the login', type: :system do
       expect(page).to have_content('Friends')
     end
   end
-  # feature 'Event creation' do
-  #   scenario 'with valid params' do
-  #     visit root_path
-  #     fill_in 'Email', with: user.email
-  #     click_on 'Log in'
-  #     expect(page).to have_content('List of all Events')
-  #     visit 'events/new'
-  #     fill_in 'Name', with: event.name
-  #     fill_in 'Description', with: event.description
-  #     fill_in 'Location', with: event.location
-  #     fill_in 'Date', with: event.date
-  #     fill_in 'invitedlist', with: 'expeditojazz@gmail.com'
-  #     click_on 'Create Event'
-  #     visit root_path
-  #     expect(page).to have_content(event.name)
-  #     expect(Event.find_by(name: event.name)).to be_an(Event)
-  #   end
-  # end
 end
