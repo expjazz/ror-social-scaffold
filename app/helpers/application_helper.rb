@@ -18,8 +18,8 @@ module ApplicationHelper
 
   def check_friendship(user, current_user)
     @user = user
-    friendship = Friendship.find_by(active: current_user, passive: user) || Friendship.find_by(active: user, passive: current_user)
-
+    @friendship = Friendship.find_by(active: current_user, passive: user) || Friendship.find_by(active: user, passive: current_user)
+    friendship = @friendship
     if friendship
       if friendship.status != true && friendship.active == current_user
         render 'users/pending'
@@ -27,7 +27,7 @@ module ApplicationHelper
 
         render 'users/friends'
       elsif friendship.status != true && friendship.passive == current_user
-        render 'users/friendconfirm'
+        render 'users/friendconfirm', friendship: friendship
       end
     else
       render 'users/send'
