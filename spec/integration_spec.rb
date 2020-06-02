@@ -52,7 +52,7 @@ RSpec.describe 'Testing the login', type: :system do
 
     scenario 'accept request' do
       user3 = FactoryBot.create(:user)
-      friendship = Friendship.create(active: user3, passive: friend, status: false)
+      Friendship.create(active: user3, passive: friend, status: false)
       visit root_path
       fill_in 'Email', with: friend.email
       fill_in 'Password', with: 'foobar'
