@@ -1,16 +1,17 @@
-# Scaffold for social media app with Ruby on Rails
+# Social Media Clone
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## Description
+
+    We are making a social media clone
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
-
+- Ruby on Rails
+- Rspec
+- FactoryBot
+- Faker
+- Vs Code
+- Bootstrap
 
 ## Getting Started
 
@@ -18,52 +19,32 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-
+- Ruby on Rails
 
 ### Usage
 
-Start server with:
+- Clone the project to your local machine
+- Open your terminal and type in 'rails db:migrate'
+- Type 'rails server' on your terminal
 
-```
-    rails server
-```
+## Author
 
-Open `http://localhost:3000/` in your browser.
+- Okiror Frank
+- Expedito Andrade
 
-### Run tests
+👤 **Okiror Frank**
 
-```
-    rpsec --format documentation
-```
+- Github: [@frankopkusianwar](https://github.com/frankopkusianwar)
+- Twitter: [@franko0781](https://twitter.com/franko0781)
+- Linkedin: [Okiror Frank](https://linkedin.com/in/frank-okiror-250076b5)
+- Email: okirorfrank3@gmail.com
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+👤 **Expedito Andrade**
 
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
+- Github: [@githubexpjazz](https://github.com/expjazz)
+- Twitter: [@expjazz](https://twitter.com/expeditoandrade13)
+- Linkedin: [Expedito Andrade](https://www.linkedin.com/in/expedito-andrade-3645151a4/)
+- Email: expeditojazz@gmail.com
 
 ## 🤝 Contributing
 
@@ -77,9 +58,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse, standup team and the microverse community for helping build the skills that were used on this project
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](lic.url) licensed.
