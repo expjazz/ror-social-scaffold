@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:active_friends).through(:requests_received) }
     it { should have_many(:passive_friends).through(:requests_sent) }
     it { should have_many(:posts) }
-    it { should have_many(:comments)}
-    it { should have_many(:likes)}
+    it { should have_many(:comments) }
+    it { should have_many(:likes) }
   end
 end
