@@ -13,4 +13,10 @@ class User < ApplicationRecord
   has_many :requests_received, class_name: 'Friendship', foreign_key: 'passive_id'
   has_many :passive_friends, through: :requests_sent, source: :passive
   has_many :active_friends, through: :requests_received, source: :active
+
+  def self.search(name)
+    all = User.all
+    all.select { |user| user.name.include?(name) }
+  end
+
 end

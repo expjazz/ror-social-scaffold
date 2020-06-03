@@ -10,4 +10,11 @@ class FriendshipsController < ApplicationController
     @friendship.save
     redirect_to users_path
   end
+
+  def destroy
+    byebug
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+  end
+
 end

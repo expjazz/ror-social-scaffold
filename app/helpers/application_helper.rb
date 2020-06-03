@@ -39,4 +39,8 @@ module ApplicationHelper
       render 'users/friendconfirm', friendship: friendship
     end
   end
+
+  def render_search(user)
+    render 'users/search' if user == current_user
+  end
 end

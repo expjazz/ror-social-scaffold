@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users
+  get 'search_user', to: 'users#search'
 
   resources :users, only: %i[index show] do
     # post '/users', to: 'friendships#create'
-    resources :friendships, only: %i[create update]
+    resources :friendships, only: %i[create update destroy]
   end
   resources :posts, only: %i[index create] do
     resources :comments, only: [:create]

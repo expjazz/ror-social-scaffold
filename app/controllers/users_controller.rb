@@ -7,8 +7,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if @id
+      @user = User.find(@id)
+    else
+      @user = User.find(params[:id])
+    end
     @posts = @user.posts.ordered_by_most_recent
     @friendship = Friendship.new
   end
+
+  def search
+    @id = current_user.id
+    @user_result = User.search(params[:user_search])
+    if @id
+      @user = User.find(@id)
+    else
+      @user = User.find(params[:id])
+    end
+    @posts = @user.posts.ordered_by_most_recent
+    @friendship = Friendship.new
+    render 'users/show'
+  end
+
 end
