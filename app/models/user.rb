@@ -19,4 +19,27 @@ class User < ApplicationRecord
     all.select { |user| user.name.include?(name) }
   end
 
+  def friends
+    f1 = active_friends
+    active = []
+    passive = []
+    f1.each do |f|
+      active << Friendship.find_by(active_id: f.id, status: true).active
+    end
+    f2 = passive_friends
+    f2.each do |f|
+      friendship = Friendship.find_by(passive_id: f.id, status: true)
+      passive << friendship.passive if friendship
+    end
+    if active && passive
+      active + passive
+    elsif active
+      active
+    elsif
+      passive
+    else
+      []
+    end
+  end
+
 end

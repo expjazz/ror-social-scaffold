@@ -17,11 +17,11 @@ module ApplicationHelper
   end
 
   def check_friendship(user, current_user)
-    @user = user
+    @friend = user
     @friendship = Friendship.find_by(active: current_user, passive: user) ||
                   Friendship.find_by(active: user, passive: current_user)
     friendship = @friendship
-    return '' if current_user == @user
+    return '' if current_user == @friend
 
     if friendship
       check_friend_status(friendship)
@@ -42,5 +42,17 @@ module ApplicationHelper
 
   def render_search(user)
     render 'users/search' if user == current_user
+  end
+
+  def render_username(user)
+    render 'users/username', user: @user
+  end
+
+  def check_posts(post)
+    if current_user.friends.include(post.user) || post.user == current_user
+      post
+    else
+      return ''
+    end
   end
 end

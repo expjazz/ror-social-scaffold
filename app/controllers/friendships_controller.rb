@@ -12,7 +12,6 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    byebug
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
   end
