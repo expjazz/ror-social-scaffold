@@ -44,15 +44,7 @@ module ApplicationHelper
     render 'users/search' if user == current_user
   end
 
-  def render_username(user)
+  def render_username(_user)
     render 'users/username', user: @user
-  end
-
-  def check_posts(post)
-    if current_user.friends.include(post.user) || post.user == current_user
-      post
-    else
-      return ''
-    end
   end
 end

@@ -15,5 +15,4 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
   end
-
 end

@@ -38,14 +38,14 @@ RSpec.describe 'Testing the login', type: :system do
 
   feature 'Friendship' do
     user2 = FactoryBot.create(:user)
-    friend = User.first
+    friend = FactoryBot.create(:user)
     scenario 'make the request' do
       visit root_path
       fill_in 'Email', with: user2.email
       fill_in 'Password', with: user2.password
       click_on 'Log in'
       click_on 'All users'
-      expect(page).to have_content(friend.name)
+      expect(page).to have_content(/#{friend.name}/i)
       find('.add', match: :first).click
       expect(page).to have_content('Waiting For Confirmation')
     end

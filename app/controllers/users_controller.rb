@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
     @friendship = Friendship.new
+    @pending = current_user.friends(false)
   end
 
   def search
@@ -19,5 +20,4 @@ class UsersController < ApplicationController
     @friendship = Friendship.new
     render 'users/show'
   end
-
 end
