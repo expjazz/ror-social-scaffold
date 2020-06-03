@@ -20,26 +20,36 @@ class User < ApplicationRecord
   end
 
   def friends(bool)
-    f1 = active_friends
-    active = []
-    passive = []
-    f1.each do |f|
-      friendship = Friendship.find_by(active_id: f.id, passive_id: self.id, status: bool)
-      active << friendship.active if friendship
-    end
-    f2 = passive_friends
-    f2.each do |f|
-      friendship = Friendship.find_by(passive_id: f.id, active_id: self.id, status: bool)
-      passive << friendship.passive if friendship
-    end
+    active = friend_active(bool)
+    passive = friend_passive(bool)
     if active && passive
       active + passive
     elsif active
       active
-    elsif
+    elsif passive
       passive
     else
       []
     end
+  end
+
+  def friend_active(bool)
+    active = []
+    f1 = active_friends
+    f1.each do |f|
+      friendship = Friendship.find_by(active_id: f.id, passive_id: id, status: bool)
+      active << friendship.active if friendship
+    end
+    active
+  end
+
+  def friend_passive(bool)
+    passive = []
+    f2 = passive_friends
+    f2.each do |f|
+      friendship = Friendship.find_by(passive_id: f.id, active_id: id, status: bool)
+      passive << friendship.passive if friendship
+    end
+    passive
   end
 end
