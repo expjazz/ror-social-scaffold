@@ -24,12 +24,12 @@ class User < ApplicationRecord
     active = []
     passive = []
     f1.each do |f|
-      friendship = Friendship.find_by(active_id: f.id, status: bool)
+      friendship = Friendship.find_by(active_id: f.id, passive_id: self.id, status: bool)
       active << friendship.active if friendship
     end
     f2 = passive_friends
     f2.each do |f|
-      friendship = Friendship.find_by(passive_id: f.id, status: bool)
+      friendship = Friendship.find_by(passive_id: f.id, active_id: self.id, status: bool)
       passive << friendship.passive if friendship
     end
     if active && passive
