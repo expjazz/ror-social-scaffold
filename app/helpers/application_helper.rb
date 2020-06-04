@@ -15,4 +15,36 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def check_friendship(user, current_user)
+    @friend = user
+    @friendship = Friendship.find_by(active: current_user, passive: user) ||
+                  Friendship.find_by(active: user, passive: current_user)
+    friendship = @friendship
+    return '' if current_user == @friend
+
+    if friendship
+      check_friend_status(friendship)
+    else
+      render 'users/send'
+    end
+  end
+
+  def check_friend_status(friendship)
+    if friendship.status != true && friendship.active == current_user
+      render 'users/pending'
+    elsif friendship.status == true
+      render 'users/friends'
+    elsif friendship.status != true && friendship.passive == current_user
+      render 'users/friendconfirm', friendship: friendship
+    end
+  end
+
+  def render_search(user)
+    render 'users/search' if user == current_user
+  end
+
+  def render_username(_user)
+    render 'users/username', user: @user
+  end
 end

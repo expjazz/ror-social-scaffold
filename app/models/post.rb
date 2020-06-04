@@ -7,4 +7,12 @@ class Post < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def check_posts(current_user)
+    if current_user.friends(true).include?(user) || user == current_user
+      true
+    else
+      false
+    end
+  end
 end

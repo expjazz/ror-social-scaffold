@@ -35,19 +35,23 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'sqlite3', '~> 1.4'
+  gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'sqlite3', '~> 1.4'
+  gem 'webdrivers', '~> 4.0'
 end
 
 group :test do
-  gem 'rspec'
   gem 'launchy'
   gem 'shoulda-matchers', '~>3.1'
 end

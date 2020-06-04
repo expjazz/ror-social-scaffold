@@ -1,16 +1,7 @@
-<section class="user-section">
-  <%= render_search(@user) %>
-  <%= render_username(@user)%>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
 <section class="users-section">
   <ul class="users-list">
-    <% @pending.each do |user| %>
+  <% if @user_result %>
+    <% @user_result.each do |user| %>
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
@@ -19,6 +10,6 @@
         </span>
       </li>
     <% end %>
+  <% end %>
   </ul>
 </section>
-
