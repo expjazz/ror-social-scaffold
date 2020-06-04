@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = current_user
     @posts = @user.posts.ordered_by_most_recent
     @friendship = Friendship.new
+    @pending = current_user.friends(false)
     render 'users/show'
   end
 end
