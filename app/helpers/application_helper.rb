@@ -15,6 +15,16 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+  
+  def like_count(post)
+    @apost = post
+    render 'posts/likes'
+  end
+
+  def comments_count(post)
+    @bpost = post
+    render 'posts/comments'
+  end
 
   def check_friendship(user, current_user)
     @friend = user
