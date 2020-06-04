@@ -49,24 +49,18 @@ module ApplicationHelper
   end
 
   def pending
-    if @pending
-      render 'users/pendingfriends'
-    end
+    render 'users/pendingfriends' if @pending
   end
 
   def friends_of_not_friends(user)
     @friends_notfriend = current_user.check_friends_of_not_friends(user)
-    if !@friends_notfriend.empty?
-      render 'users/friendsofnotfriend', friends_notfriend: @friends_notfriend
-    end
+    render 'users/friendsofnotfriend', friends_notfriend: @friends_notfriend unless @friends_notfriend.empty?
   end
 
   def friends_of_friends(user)
-    if current_user.friends(true).include?(user)
-      @friends_friend = current_user.check_mutual_friends(user)
-      if !@friends_friend.empty?
-        render 'users/friendsoffriend', friends_friend: @friends_friend
-      end
-    end
+    return '' unless current_user.friends(true).include?(user)
+
+    @friends_friend = current_user.check_mutual_friends(user)
+    render 'users/friendsoffriend', friends_friend: @friends_friend
   end
 end

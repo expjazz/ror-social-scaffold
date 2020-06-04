@@ -54,13 +54,16 @@ class User < ApplicationRecord
   end
 
   def check_friends_of_not_friends(not_friend)
-    not_friend.friends(true).select do |x| 
-      !self.friends(true).include?(not_friend) && !self.friends(false).include?(x)
+    if !friends(true).include?(not_friend)
+      not_friend.friends(true).select do |x|
+        friends(true).include?(x) && !friends(false).include?(x)
+      end
+    else
+      []
     end
   end
 
   def check_mutual_friends(friend)
-    friend.friends(true). select { |x| self.friends(true).include?(x) }
+    friend.friends(true). select { |x| friends(true).include?(x) }
   end
-
 end
