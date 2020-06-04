@@ -1,1 +1,1 @@
-<p> <%= @apost.likes.count  %> likes </p>
+<p> <%= pluralize(@apost.likes.count, "Like")  %>  </p>
