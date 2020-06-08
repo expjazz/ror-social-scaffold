@@ -16,6 +16,16 @@ module ApplicationHelper
     end
   end
 
+  def like_count(post)
+    @apost = post
+    render 'posts/likes'
+  end
+
+  def comments_count(post)
+    @bpost = post
+    render 'posts/comments'
+  end
+
   def check_friendship(user, current_user)
     @friend = user
     @friendship = Friendship.find_by(active: current_user, passive: user) ||
@@ -46,5 +56,21 @@ module ApplicationHelper
 
   def render_username(_user)
     render 'users/username', user: @user
+  end
+
+  def pending
+    render 'users/pendingfriends' if @pending
+  end
+
+  def friends_of_not_friends(user)
+    @friends_notfriend = current_user.check_friends_of_not_friends(user)
+    render 'users/friendsofnotfriend', friends_notfriend: @friends_notfriend unless @friends_notfriend.empty?
+  end
+
+  def friends_of_friends(user)
+    return '' unless current_user.friends(true).include?(user)
+
+    @friends_friend = current_user.check_mutual_friends(user)
+    render 'users/friendsoffriend', friends_friend: @friends_friend
   end
 end
