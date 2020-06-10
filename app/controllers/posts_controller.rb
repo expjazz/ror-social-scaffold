@@ -21,9 +21,20 @@ class PostsController < ApplicationController
 
   def timeline_posts
     @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts = friends_posts(@timeline_posts)
   end
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def friends_posts(timeline)
+    timeline.select { |p| p.check_posts(current_user) }
+  end
+
+  def returned_posts
+    return @friends_posts = friends_posts if friends_posts
+
+    timeline_posts
   end
 end
